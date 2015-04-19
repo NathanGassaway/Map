@@ -3,3 +3,17 @@
         width:900px;
         border: solid 1px red;
       }
+ p{ 
+ 	color: red;
+ 	background-color: blue;
+ }
+
+.good {
+	background-color: green;
+	border-radius: 40%;
+	padding: 50%;
+}
+.bad {
+	background-color: orange; 
+	border: black dashed 1px;
+}
