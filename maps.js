@@ -1,7 +1,7 @@
 
       $(document).ready(function(){
         //getting the data from instagram
-        $.getJSON("http://cooper-union-instagram-proxy.herokuapp.com/search/tag/shwick?count=100", function(response){
+        $.getJSON("http://cooper-union-instagram-proxy.herokuapp.com/search/tag/nyc?count=100", function(response){
           //create the placeholder for valid images
           console.log(response)
           var instagramPositions = [];
