@@ -19,19 +19,19 @@
              console.log("bad");
           }
           
-          var loLocation = response[i].location;
-
-          if(loLocation < 80){
-            console.log("great");
+          var loLikes = response[i].likes.count;
+          var loUser = response[i].user.username;
+          if(loLikes > 50){
+            console.log(loUser + loLikes);
           } 
-          else if (loLocation < 60){
-            console.log("okay");
+          else if (loLikes > 30){
+            console.log(loUser + "okay");
           } 
-          else if (loLocation < 30){
-            console.log("worse")
+          else if (loLikes > 10){
+            console.log(loUser + "worse")
           }
           else {
-            console.log("worst")
+            console.log(loUser + loLikes)
           }
           } 
         });
