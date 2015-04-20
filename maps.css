@@ -1,19 +1,40 @@
   #map {
-        height:900px;
-        width:900px;
-        border: solid 1px red;
+        height:300px;
+        width:300px;
+        display: block;
+        position: relative;
+        top: 40%;
+        left: 43%;
+        cursor: none;
       }
+ #sidebar{
+ 	display: inline-block;
+ 	position: relative;
+ 	left: 28%;
+ 	font-family: helvetica, Arial, Sans-serif;
+ 	text-align: center;
+ 	width: 50%;
+ }
  p{ 
- 	color: red;
- 	background-color: blue;
+ 	color: white;
+ 	background-color: orange;
+ 	text-align: center;
+ 	text-decoration: none;
  }
 
 .good {
-	background-color: green;
-	border-radius: 40%;
-	padding: 50%;
+	background-color: green; 
+	padding: 5%;
 }
 .bad {
 	background-color: orange; 
 	border: black dashed 1px;
+	padding: 10%;
+}
+#map img{
+	border: 3px black solid;
+	
+}
+p img{
+  border-radius: 100%;
 }

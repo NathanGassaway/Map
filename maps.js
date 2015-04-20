@@ -1,38 +1,59 @@
 
       $(document).ready(function(){
-        //getting the data from instagram
-        $.getJSON("http://cooper-union-instagram-proxy.herokuapp.com/search/tag/shwick?count=100", function(response){
-          //create the placeholder for valid images
-          console.log(response)
+
+        $.getJSON("http://cooper-union-instagram-proxy.herokuapp.com/search/tag/bushwick?count=100", function(response){
+       
+          console.log(response);
+
+          var lololocation = prompt("How does getting likes feel?");
+          var lololocation2 = prompt("How do you feel when you don't get likes?");
+
           var instagramPositions = [];
-          //looping through the response from instagram
+
           for(var i=0; i<response.length; i++) {
             
-            $("body").append("<img src="+response[i].images.thumbnail.url+" />");
 
+            if(response[i].location != null) {
+              
+              var reResponse = response[i].likes.count;
 
-            var counter = response[i].comments.count;
-            if(counter < 1) {
-              console.log("good")
-            }
-            else {
-             console.log("bad");
-          }
+              var reUser = "<img src="+response[i].user.profile_picture+" />";
+              // {
+              //   'name': response[i].user.username,
+              //   'pink': response[i].link
+              // }
+
+              
+              var reGoogle = new google.maps.LatLng(response[i].location.latitude, response[i].location.longitude);
+
+              var reProfilePic = response[i].link;
+
+              var photoMarker = {
+                'title': "<p>"+reResponse+"</p>",
+                'map': reGoogle,
+                'link': reProfilePic,
+                'html':reUser
+              }
+              instagramPositions.push(photoMarker);
+              
+
+            } //end of "if the photo has location data"
+
+            if(reResponse > 10){
+            $(".nono").addClass("bad")
+            $(".nono").append("<h1>"+reUser+"</h1>" + " Is " + lololocation + " ")
+          } 
           
-          var loLikes = response[i].likes.count;
-          var loUser = response[i].user.username;
-          if(loLikes > 50){
-            console.log(loUser + loLikes);
-          } 
-          else if (loLikes > 30){
-            console.log(loUser + "okay");
-          } 
-          else if (loLikes > 10){
-            console.log(loUser + "worse")
+          if (reResponse < 10) {
+            $(".yesyes").addClass("good")
+            $(".yesyes").append("<h1>"+reUser+"</h1>" + " Is " + lololocation2 + " ")
           }
-          else {
-            console.log(loUser + loLikes)
-          }
-          } 
+          } //end of the for loop, iterating through the photos
+          //set up the map configuration
+          var mapOptions = {
+            zoom: 12,
+            center: new google.maps.LatLng(40.7043864,-73.9089994)
+          };
+          draw('map', mapOptions, instagramPositions);
         });
       });
